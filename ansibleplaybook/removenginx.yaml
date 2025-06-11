@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Remove jenkins package
+      package:
+        name: jenkins
+        state: absent

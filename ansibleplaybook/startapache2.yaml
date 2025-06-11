@@ -1,0 +1,14 @@
+- name: installation of apache2
+  hosts: all
+  become: true
+  tasks:
+  - name: installing apache2
+    apt:
+      name: apache2
+      state: present
+
+  - name: checking for apache2 service
+    service:
+      name: apache2
+      state: started
+      enabled: yes
