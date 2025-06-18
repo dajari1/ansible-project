@@ -4,8 +4,13 @@
   vars:
    servicestate: stopped
    appstate: absent
-   appname: nginx
+   appname: apache2
+   upgradestatus: yes
   tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: "{{upgradestatus}}"
+      update_cache: "{{upgradestatus}}"
   - name: installing "{{appname}}"
     apt: 
       name: "{{appname}}"

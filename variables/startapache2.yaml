@@ -1,11 +1,16 @@
-- name: removal of "{{appname}}"
+- name: installation of "{{appname}}"
   hosts: all
   become: true
   vars:
-   servicestate: stopped
-   appstate: absent
-   appname: nginx
+   servicestate: started
+   appstate: present
+   appname: apache2
+   upgradestatus: yes
   tasks:
+  - name: Update and upgrade apt packages
+    apt:
+      upgrade: "{{upgradestatus}}"
+      update_cache: "{{upgradestatus}}"
   - name: installing "{{appname}}"
     apt: 
       name: "{{appname}}"
