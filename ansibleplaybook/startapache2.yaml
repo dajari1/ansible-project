@@ -4,7 +4,7 @@
   vars:
    servicestate: stopped
    appstate: absent
-   appname: nginx
+   appname: apache2
   tasks:
   - name: installing "{{appname}}"
     apt: 
